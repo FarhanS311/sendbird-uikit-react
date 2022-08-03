@@ -124,7 +124,7 @@ const ChannelListUI: React.FC<ChannelListUIProps> = (props: ChannelListUIProps) 
         className="sendbird-channel-list__body"
         onScroll={(e) => {
           const target = e?.target as HTMLDivElement;
-          const fetchMore = target.clientHeight + target.scrollTop === target.scrollHeight;
+          const fetchMore = target.clientHeight + Math.round(target.scrollTop) === target.scrollHeight;
           if (fetchMore && channelSource?.hasNext) {
             logger.info('ChannelList: Fetching more channels');
             channelListDispatcher({
